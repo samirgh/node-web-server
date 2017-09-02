@@ -15,20 +15,6 @@ app.set('view engine', 'hbs');
 // Set folder for static files
 app.use(express.static(__dirname + '/public'));
 
-// Middleware
-app.use((req, res, next) => {
-    let now = new Date().toString();
-    let log = `${now}: ${req.method} ${req.path} \n`;
-
-    fs.appendFileSync('server.log', log, (err) => {
-        if (err) { console.log('Cant write to server.log'); }
-    });
-
-    console.log(`${now}: ${req.method} ${req.path}`);
-    next()
-});
-
-
 // Register Helper
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
