@@ -1,6 +1,5 @@
 const express        = require('express');
 const hbs            = require('hbs');
-const fs             = require('fs');
 
 const port = process.env.PORT || 3000;
 
@@ -24,6 +23,12 @@ hbs.registerHelper('getCurrentYear', () => {
 app.get('/', (req, res) => {
     res.render('home.hbs', {
         title: 'home page',
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        title: 'Projects page'
     });
 });
 
